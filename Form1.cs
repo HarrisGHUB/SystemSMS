@@ -46,27 +46,12 @@ namespace SystemSMS
         //
         public string LocalIPAddress()
         {
-           
-            //IPHostEntry host;
-            string localIP = "";
              
-            // host = Dns.GetHostByAddress("172.168.201.59");
-            // string hn=host.ToString();
-             //string hostname = ip.HostName;
-            //host = Dns.GetHostEntry(Dns.GetHostName());
-            //foreach (IPAddress ip in host.AddressList)
-            //{
-            //    if (ip.AddressFamily == AddressFamily.InterNetwork)
-            //    {
-            //        localIP = ip.ToString();
-            //        break;
-            //    }
-            //}
+            string localIP = "";               
             return localIP;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-           //LocalIPAddress();
             int a = 0;
             systemdate();
 
@@ -106,18 +91,6 @@ systemsms_pinginfo.pingResult)  VALUES('" + dr[1].ToString() + "','" + dr[2].ToS
                //dt = DBHandler.InsertData(qry1);
                 pcid = dr[0].ToString();                    
                 msgvar = "Host Name:" + dr[2].ToString() + "\r" + "IP:" + dr[1].ToString() + "\r" + "System Shutdown !";
-
-
-              
-                 //List<Button> buttons = new List<Button>();
-                //for (int i = 0; i < 10; ++i)
-                //{
-                //    var button = new Button();
-                //    button.Location = new Point(button.Width * i + 4, 0);
-                //    Controls.Add(button);
-                //}
-
-                 
 
                  if (a < 8)
                  {
@@ -161,17 +134,10 @@ systemsms_pinginfo.pingResult)  VALUES('" + dr[1].ToString() + "','" + dr[2].ToS
                 // a++;
                 if (reply.Status != IPStatus.Success)
                 {
-                    //abc();
-                    //Console.WriteLine("Address: {0}", reply.Address.ToString());
-                    //Console.WriteLine("RoundTrip time: {0}", reply.RoundtripTime);
-                    //Console.WriteLine("Time to live: {0}", reply.Options.Ttl);
-                    //Console.WriteLine("Don't fragment: {0}", reply.Options.DontFragment);
-                    //Console.WriteLine("Buffer size: {0}", reply.Buffer.Length);
+
                 }
             }
 
-            //ComputerPanel cp = new ComputerPanel();
-            //cp.Show();
         }
 
         //
@@ -199,19 +165,6 @@ where systemsms_subscrip.pcID='1' and systemsms_person.isActive='"+pcid+"'";
                 arr[a] = dt.Rows[a][0].ToString();
             }
 
-            //foreach (DataRow dr in dt1.Rows)
-            //{
-            //    string[] arr = new string[dr.ItemArray.Length];
-            //    for (int x = 0; x < dr.ItemArray.Length; x++)
-            //    {
-            //        arr[x] = dr[2].ToString();
-            //    }
-            //}
-
-
-            
-
-
             //FOR INSERT IN SMS_JOBS TABLE FOR SENDING MSG
 
             dt.Reset();
@@ -223,11 +176,6 @@ VALUES ('1','" + strr + "','" + strr + "','" + strr + "','0','" + arr[a] + "','"
                 dt = DBHandler.GetData(qry1);
 
             }
-
-
-
-
-
             dt.Reset();
             string qry2 = "select jobsID,userid,delivered,telNo,message from systemsms_jobs where systemsms_jobs.delivered='0'";
             dt = DBHandler.GetData(qry2);
@@ -244,8 +192,6 @@ VALUES ('1','" + strr + "','" + strr + "','" + strr + "','0','" + arr[a] + "','"
         //
         private void sent_sms()
         {
-            //systemdate();
-            //string number = "+923452793400";
             string number = no;
             string message = msg;
             //string message ="This " +"\n"+ "is" + "\n"+ "SMS";
@@ -271,9 +217,6 @@ VALUES ('1','" + strr + "','" + strr + "','" + strr + "','0','" + arr[a] + "','"
             _serialPort.Write(message + "\x1A");
 
             Thread.Sleep(1000);
-
-            //MessageBox.Show("Sent !!!");
-            //labelStatus.Text = "Status: Message sent";
 
             _serialPort.Close();
 
